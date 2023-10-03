@@ -16,17 +16,14 @@ function createLog(params) {
 function getLogs(params) {
     return new Promise((resolve, reject) => {
         const page = params.page || 1;
-        const per_page = params.per_page || 10;
-        const query = db.prepare("SELECT * FROM logs LIMIT ?,?", (err) => {
-            reject(err);
-        });
-        query.run((page - 1) * per_page, page * per_page);
-        query.all((err, rows) => {
+        const perPage = params.per_page || 10;
+        db.all(`SELECT * FROM logs LIMIT ${page * perPage} OFFSET ${(page - 1) * perPage}`, (err, rows) => {
+            console.error(err, rows)
             if (err) {
                 reject(err);
             }
             resolve(rows);
-        });
+        })
     });
 }
 
