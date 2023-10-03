@@ -11,6 +11,10 @@ async function createLog(method, endpoint) {
     return response;
 }
 
+// TODO: Add method getLogs
+
+// TODO: Add method getLogById
+
 module.exports = {
     createLog,
 };

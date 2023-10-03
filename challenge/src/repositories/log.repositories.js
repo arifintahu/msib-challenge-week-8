@@ -18,7 +18,6 @@ function getLogs(params) {
         const page = params.page || 1;
         const perPage = params.per_page || 10;
         db.all(`SELECT * FROM logs LIMIT ${page * perPage} OFFSET ${(page - 1) * perPage}`, (err, rows) => {
-            console.error(err, rows)
             if (err) {
                 reject(err);
             }
@@ -26,6 +25,8 @@ function getLogs(params) {
         })
     });
 }
+
+// TODO: Add method getLogById
 
 module.exports = {
   createLog,
