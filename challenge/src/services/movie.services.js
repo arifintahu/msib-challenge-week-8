@@ -4,12 +4,20 @@ const { OMDB_KEY, OMDB_API } = require("../config");
 async function searchMovies(params) {
     const { key, page } = params;
     const response = await fetch(`${OMDB_API}/?apikey=${OMDB_KEY}&s=${key}&page=${page}`);
-    return response.json();
+    const result = await response.json();
+    if (result.Response === "False") {
+        return Promise.reject(new Error(result.Error))
+    }
+    return result
 }
 
 async function getMovieById(id) {
     const response = await fetch(`${OMDB_API}/?apikey=${OMDB_KEY}&i=${id}`);
-    return response.json();
+    const result = await response.json();
+    if (result.Response === "False") {
+        return Promise.reject(new Error(result.Error));
+    }
+    return result;
 }
 
 module.exports = {

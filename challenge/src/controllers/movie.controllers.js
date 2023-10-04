@@ -10,7 +10,7 @@ async function searchMovies(req, res) {
         });
         res.json(result);
     } catch(err) {
-        res.status(400).end();
+        res.status(500).send(err.message);
     }
 }
 
@@ -20,7 +20,7 @@ async function getMovieById(req, res) {
         const result = await movieServices.getMovieById(id);
         res.json(result);
     } catch(err) {
-        res.status(400).end();
+        res.status(500).send(err.message);
     }
 }
 
