@@ -5,10 +5,10 @@ const { logging } = require("../middlewares");
 const router = Router();
 
 router.get("/", [logging], (req, res) => {
-    movieControllers.searchMovies(req, res);
+  movieControllers.searchMovies(req, res);
 });
 router.get("/:id", [logging], (req, res) => {
-    movieControllers.getMovieById(req, res);
+  movieControllers.getMovieById(req, res);
 });
 
 module.exports = router;

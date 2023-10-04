@@ -3,13 +3,13 @@ const routes = require("./routes");
 const { API } = require("./config");
 
 function createServer() {
-    const app = express();
+  const app = express();
 
-    app.use(express.urlencoded({ extended: false }));
-    app.use(express.json());
-    app.use(`/${API}`, routes);
+  app.use(express.urlencoded({ extended: false }));
+  app.use(express.json());
+  app.use(`/${API}`, routes);
 
-    return app;
+  return app;
 }
 
 module.exports = createServer;
